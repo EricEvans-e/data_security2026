@@ -1,0 +1,3 @@
+[2026-04-20 18:58:07,915] server mode=basic host=127.0.0.1 port=9101 dataset_size=16
+[2026-04-20 18:58:07,915] dataset preview=["record-01|name=Alice|dept=AI|score=82", "record-02|name=Bob|dept=Security|score=89", "record-03|name=Carol|dept=Networks|score=96"]
+[2026-04-20 18:58:13,796] received query: mode=basic, dataset_size=16, request_bytes=20919

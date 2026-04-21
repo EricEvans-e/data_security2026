@@ -1,0 +1,116 @@
+{
+  "dataset_scale": [
+    {
+      "mode": "basic",
+      "count": 8,
+      "key_size": 2048,
+      "avg_total_ms": 1845.71,
+      "avg_keygen_ms": 636.54,
+      "avg_query_build_ms": 921.78,
+      "avg_network_ms": 254.75,
+      "avg_decrypt_ms": 32.65,
+      "avg_request_bytes": 10811.33,
+      "avg_response_bytes": 1363
+    },
+    {
+      "mode": "basic",
+      "count": 16,
+      "key_size": 2048,
+      "avg_total_ms": 2699.26,
+      "avg_keygen_ms": 420.06,
+      "avg_query_build_ms": 1800.88,
+      "avg_network_ms": 448.5,
+      "avg_decrypt_ms": 29.81,
+      "avg_request_bytes": 20920.67,
+      "avg_response_bytes": 1364
+    },
+    {
+      "mode": "basic",
+      "count": 32,
+      "key_size": 2048,
+      "avg_total_ms": 4678.05,
+      "avg_keygen_ms": 471.71,
+      "avg_query_build_ms": 3523.29,
+      "avg_network_ms": 653.81,
+      "avg_decrypt_ms": 29.24,
+      "avg_request_bytes": 41142.67,
+      "avg_response_bytes": 1364
+    },
+    {
+      "mode": "basic",
+      "count": 64,
+      "key_size": 2048,
+      "avg_total_ms": 8769.53,
+      "avg_keygen_ms": 1257.75,
+      "avg_query_build_ms": 6343.96,
+      "avg_network_ms": 1141.18,
+      "avg_decrypt_ms": 26.63,
+      "avg_request_bytes": 81588,
+      "avg_response_bytes": 1363.67
+    }
+  ],
+  "key_size_scale": [
+    {
+      "mode": "basic",
+      "count": 16,
+      "key_size": 1024,
+      "avg_total_ms": 454.14,
+      "avg_keygen_ms": 130.25,
+      "avg_query_build_ms": 222.17,
+      "avg_network_ms": 97.27,
+      "avg_decrypt_ms": 4.44,
+      "avg_request_bytes": 10748.33,
+      "avg_response_bytes": 747.33
+    },
+    {
+      "mode": "basic",
+      "count": 16,
+      "key_size": 2048,
+      "avg_total_ms": 2590.74,
+      "avg_keygen_ms": 639.12,
+      "avg_query_build_ms": 1568.64,
+      "avg_network_ms": 355.41,
+      "avg_decrypt_ms": 27.57,
+      "avg_request_bytes": 20921.67,
+      "avg_response_bytes": 1363.67
+    },
+    {
+      "mode": "basic",
+      "count": 16,
+      "key_size": 3072,
+      "avg_total_ms": 9100.2,
+      "avg_keygen_ms": 3308.34,
+      "avg_query_build_ms": 4853.41,
+      "avg_network_ms": 853.75,
+      "avg_decrypt_ms": 84.7,
+      "avg_request_bytes": 31090.67,
+      "avg_response_bytes": 1979.67
+    }
+  ],
+  "mode_compare": [
+    {
+      "mode": "basic",
+      "count": 16,
+      "key_size": 2048,
+      "avg_total_ms": 2622.82,
+      "avg_keygen_ms": 667.15,
+      "avg_query_build_ms": 1566.07,
+      "avg_network_ms": 362.23,
+      "avg_decrypt_ms": 27.37,
+      "avg_request_bytes": 20923,
+      "avg_response_bytes": 1363.33
+    },
+    {
+      "mode": "aes",
+      "count": 16,
+      "key_size": 2048,
+      "avg_total_ms": 2418.77,
+      "avg_keygen_ms": 277.16,
+      "avg_query_build_ms": 1583.0,
+      "avg_network_ms": 530.48,
+      "avg_decrypt_ms": 28.13,
+      "avg_request_bytes": 20917.33,
+      "avg_response_bytes": 1372
+    }
+  ]
+}

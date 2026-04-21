@@ -1,0 +1,9 @@
+=== Prove ===
+Public statement: x^3 + x + 5 = Out
+Out = 35
+Witness x = 4
+x_square = 16
+x_cube = 64
+sum_with_x = 68
+expr_out = 73
+Witness does not satisfy the public statement.

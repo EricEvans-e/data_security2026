@@ -1,0 +1,79 @@
+=== Prove ===
+Public statement: x^3 + x + 5 = Out
+Out = 35
+Witness x = 3
+x_square = 9
+x_cube = 27
+sum_with_x = 30
+expr_out = 35
+(enter) Call to r1cs_gg_ppzksnark_prover   	[             ]	(1776766481.2991s x0.00 from start)
+  (enter) Compute the polynomial H           	[             ]	(1776766481.2991s x0.00 from start)
+    (enter) Call to r1cs_to_qap_witness_map    	[             ]	(1776766481.2991s x0.00 from start)
+      (enter) Compute evaluation of polynomials A, B on set S	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute evaluation of polynomials A, B on set S	[0.0000s x1.04]	(1776766481.2992s x0.00 from start)
+      (enter) Compute coefficients of polynomial A	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute coefficients of polynomial A	[0.0000s x1.01]	(1776766481.2992s x0.00 from start)
+      (enter) Compute coefficients of polynomial B	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute coefficients of polynomial B	[0.0000s x1.01]	(1776766481.2992s x0.00 from start)
+      (enter) Compute ZK-patch                   	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute ZK-patch                   	[0.0000s x1.08]	(1776766481.2992s x0.00 from start)
+      (enter) Compute evaluation of polynomial A on set T	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute evaluation of polynomial A on set T	[0.0000s x1.00]	(1776766481.2992s x0.00 from start)
+      (enter) Compute evaluation of polynomial B on set T	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute evaluation of polynomial B on set T	[0.0000s x1.04]	(1776766481.2992s x0.00 from start)
+      (enter) Compute evaluation of polynomial H on set T	[             ]	(1776766481.2992s x0.00 from start)
+        (enter) Compute evaluation of polynomial C on set S	[             ]	(1776766481.2992s x0.00 from start)
+        (leave) Compute evaluation of polynomial C on set S	[0.0000s x1.07]	(1776766481.2992s x0.00 from start)
+        (enter) Compute coefficients of polynomial C	[             ]	(1776766481.2992s x0.00 from start)
+        (leave) Compute coefficients of polynomial C	[0.0000s x1.03]	(1776766481.2992s x0.00 from start)
+        (enter) Compute evaluation of polynomial C on set T	[             ]	(1776766481.2992s x0.00 from start)
+        (leave) Compute evaluation of polynomial C on set T	[0.0000s x1.83]	(1776766481.2992s x0.00 from start)
+        (enter) Divide by Z on set T               	[             ]	(1776766481.2992s x0.00 from start)
+        (leave) Divide by Z on set T               	[0.0000s x1.05]	(1776766481.2992s x0.00 from start)
+      (leave) Compute evaluation of polynomial H on set T	[0.0000s x1.01]	(1776766481.2992s x0.00 from start)
+      (enter) Compute coefficients of polynomial H	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute coefficients of polynomial H	[0.0000s x1.02]	(1776766481.2992s x0.00 from start)
+      (enter) Compute sum of H and ZK-patch      	[             ]	(1776766481.2992s x0.00 from start)
+      (leave) Compute sum of H and ZK-patch      	[0.0000s x1.11]	(1776766481.2992s x0.00 from start)
+    (leave) Call to r1cs_to_qap_witness_map    	[0.0001s x1.00]	(1776766481.2992s x0.00 from start)
+  (leave) Compute the polynomial H           	[0.0001s x1.00]	(1776766481.2992s x0.00 from start)
+  (enter) Compute the proof                  	[             ]	(1776766481.2993s x0.00 from start)
+    (enter) Compute evaluation to A-query      	[             ]	(1776766481.2993s x0.00 from start)
+    (enter) Process scalar vector              	[             ]	(1776766481.2993s x0.00 from start)
+      * Elements of w skipped: 0 (0.00%)
+      * Elements of w processed with special addition: 1 (14.29%)
+      * Elements of w remaining: 6 (85.71%)
+    (leave) Process scalar vector              	[0.0000s x1.05]	(1776766481.2993s x0.00 from start)
+    (leave) Compute evaluation to A-query      	[0.0000s x1.00]	(1776766481.2993s x0.00 from start)
+    (enter) Compute evaluation to B-query      	[             ]	(1776766481.2993s x0.00 from start)
+    (enter) Process scalar vector              	[             ]	(1776766481.2993s x0.00 from start)
+      * Elements of w skipped: 0 (0.00%)
+      * Elements of w processed with special addition: 1 (50.00%)
+      * Elements of w remaining: 1 (50.00%)
+    (leave) Process scalar vector              	[0.0000s x1.06]	(1776766481.2993s x0.00 from start)
+    (leave) Compute evaluation to B-query      	[0.0000s x1.01]	(1776766481.2993s x0.00 from start)
+    (enter) Compute evaluation to H-query      	[             ]	(1776766481.2993s x0.00 from start)
+    (leave) Compute evaluation to H-query      	[0.0007s x1.00]	(1776766481.3001s x0.00 from start)
+    (enter) Compute evaluation to L-query      	[             ]	(1776766481.3001s x0.00 from start)
+    (enter) Process scalar vector              	[             ]	(1776766481.3001s x0.00 from start)
+      * Elements of w skipped: 0 (0.00%)
+      * Elements of w processed with special addition: 0 (0.00%)
+      * Elements of w remaining: 5 (100.00%)
+    (leave) Process scalar vector              	[0.0000s x1.03]	(1776766481.3001s x0.00 from start)
+    (leave) Compute evaluation to L-query      	[0.0000s x1.01]	(1776766481.3001s x0.00 from start)
+  (leave) Compute the proof                  	[0.0023s x1.00]	(1776766481.3015s x0.00 from start)
+(leave) Call to r1cs_gg_ppzksnark_prover   	[0.0025s x1.00]	(1776766481.3016s x0.00 from start)
+* G1 elements in proof: 2
+* G2 elements in proof: 1
+* Proof size in bits: 1019
+Primary input: 1
+35
+
+Auxiliary input: 5
+3
+9
+27
+30
+35
+
+Saved proof to: /home/eric/workspace/data-security-lab2/artifacts/proof.raw

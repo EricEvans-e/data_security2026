@@ -1,0 +1,346 @@
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Warning (dev) at CMakeLists.txt:3 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    CMAKE_PROJECT_VERSION
+    CMAKE_PROJECT_VERSION_MAJOR
+    CMAKE_PROJECT_VERSION_MINOR
+    CMAKE_PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Deprecation Warning at depends/libsnark/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at depends/libsnark/depends/gtest/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at depends/libsnark/depends/gtest/googlemock/CMakeLists.txt:46 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at depends/libsnark/depends/gtest/googletest/CMakeLists.txt:55 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at depends/libsnark/depends/libff/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- GMP: /usr/lib/x86_64-linux-gnu/libgmp.so, /usr/include/x86_64-linux-gnu
+CMake Deprecation Warning at depends/libsnark/depends/libfqfft/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/eric/workspace/data-security-lab2/build
+Scanning dependencies of target snark_supercop
+Consolidate compiler generated dependencies of target snark_supercop
+Consolidate compiler generated dependencies of target ff
+[ 53%] Built target snark_supercop
+[ 72%] Built target ff
+Consolidate compiler generated dependencies of target snark
+[ 88%] Built target snark
+Consolidate compiler generated dependencies of target snark_adsnark
+Consolidate compiler generated dependencies of target main
+[ 90%] Built target snark_adsnark
+[ 90%] Built target main
+Consolidate compiler generated dependencies of target range
+Consolidate compiler generated dependencies of target test
+[ 94%] Built target test
+[ 94%] Built target range
+Consolidate compiler generated dependencies of target zk_prove
+Consolidate compiler generated dependencies of target zk_setup
+[ 94%] Building CXX object src/CMakeFiles/zk_setup.dir/zk_setup.cpp.o
+[ 94%] Building CXX object src/CMakeFiles/zk_prove.dir/zk_prove.cpp.o
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:20:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:206:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  206 |         const mp_limb_t borrow = mpn_sub_1(this->mont_repr.data, modulus.data, n, (mp_limb_t)-x);
+      |                         ^~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:11:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:206:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  206 |         const mp_limb_t borrow = mpn_sub_1(this->mont_repr.data, modulus.data, n, (mp_limb_t)-x);
+      |                         ^~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.hpp:131,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/data_structures/sparse_vector.tcc:23,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/data_structures/sparse_vector.hpp:78,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/data_structures/accumulation_vector.hpp:17,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.hpp:48,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:13,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.tcc: In instantiation of ‘T libff::multi_exp_with_mixed_addition(typename std::vector<T>::const_iterator, typename std::vector<T>::const_iterator, typename std::vector<FieldT>::const_iterator, typename std::vector<FieldT>::const_iterator, size_t) [with T = libff::alt_bn128_G1; FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; libff::multi_exp_method Method = libff::multi_exp_method_BDLO12; typename std::vector<T>::const_iterator = std::vector<libff::alt_bn128_G1>::const_iterator; typename std::vector<FieldT>::const_iterator = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >::const_iterator; size_t = long unsigned int]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:444:104:   required from ‘libsnark::r1cs_gg_ppzksnark_proof<ppT> libsnark::r1cs_gg_ppzksnark_prover(const libsnark::r1cs_gg_ppzksnark_proving_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:30:73:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/scalar_multiplication/multiexp.tcc:445:73: warning: unused parameter ‘vec_end’ [-Wunused-parameter]
+  445 |                                 typename std::vector<T>::const_iterator vec_end,
+      |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/knowledge_commitment/kc_multiexp.hpp:51,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:31,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.hpp:456,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:13,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/knowledge_commitment/kc_multiexp.tcc: In instantiation of ‘libsnark::knowledge_commitment<T1, T2> libsnark::kc_multi_exp_with_mixed_addition(libsnark::knowledge_commitment_vector<T1, T2>&, size_t, size_t, typename std::vector<FieldT>::const_iterator, typename std::vector<FieldT>::const_iterator, size_t) [with T1 = libff::alt_bn128_G2; T2 = libff::alt_bn128_G1; FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; libff::multi_exp_method Method = libff::multi_exp_method_BDLO12; libsnark::knowledge_commitment_vector<T1, T2> = libsnark::sparse_vector<libsnark::knowledge_commitment<libff::alt_bn128_G2, libff::alt_bn128_G1> >; size_t = long unsigned int; typename std::vector<FieldT>::const_iterator = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >::const_iterator]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:456:139:   required from ‘libsnark::r1cs_gg_ppzksnark_proof<ppT> libsnark::r1cs_gg_ppzksnark_prover(const libsnark::r1cs_gg_ppzksnark_proving_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:30:73:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/knowledge_commitment/kc_multiexp.tcc:47:18: warning: unused variable ‘scalar_length’ [-Wunused-variable]
+   47 |     const size_t scalar_length = std::distance(scalar_start, scalar_end);
+      |                  ^~~~~~~~~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘void libff::Fp_model<n, modulus>::mul_reduce(const libff::bigint<n>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:210:5:   required from ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:20:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:181:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  181 |             const mp_limb_t borrow = mpn_sub(res+n, res+n, n, modulus.data, n);
+      |                             ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator+=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc:234:15:   required from ‘libsnark::qap_witness<FieldT> libsnark::r1cs_to_qap_witness_map(const libsnark::r1cs_constraint_system<FieldT>&, libsnark::r1cs_primary_input<FieldT>&, libsnark::r1cs_auxiliary_input<FieldT>&, const FieldT&, const FieldT&, const FieldT&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; libsnark::r1cs_primary_input<FieldT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_auxiliary_input<FieldT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:402:73:   required from ‘libsnark::r1cs_gg_ppzksnark_proof<ppT> libsnark::r1cs_gg_ppzksnark_prover(const libsnark::r1cs_gg_ppzksnark_proving_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:30:73:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:412:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  412 |             const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, modulus.data, n);
+      |                             ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator-=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc:257:27:   required from ‘libsnark::qap_witness<FieldT> libsnark::r1cs_to_qap_witness_map(const libsnark::r1cs_constraint_system<FieldT>&, libsnark::r1cs_primary_input<FieldT>&, libsnark::r1cs_auxiliary_input<FieldT>&, const FieldT&, const FieldT&, const FieldT&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; libsnark::r1cs_primary_input<FieldT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_auxiliary_input<FieldT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:402:73:   required from ‘libsnark::r1cs_gg_ppzksnark_proof<ppT> libsnark::r1cs_gg_ppzksnark_prover(const libsnark::r1cs_gg_ppzksnark_proving_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >; libsnark::r1cs_gg_ppzksnark_auxiliary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:30:73:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:504:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  504 |         const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, other.mont_repr.data, n);
+      |                         ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘void libff::Fp_model<n, modulus>::mul_reduce(const libff::bigint<n>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:210:5:   required from ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:11:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:181:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  181 |             const mp_limb_t borrow = mpn_sub(res+n, res+n, n, modulus.data, n);
+      |                             ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::invert() [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:691:15:   required from ‘libff::Fp_model<n, modulus> libff::Fp_model<n, modulus>::inverse() const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:226:55:   required from ‘libsnark::r1cs_gg_ppzksnark_keypair<ppT> libsnark::r1cs_gg_ppzksnark_generator(libsnark::r1cs_gg_ppzksnark_constraint_system<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_constraint_system<ppT> = libsnark::r1cs_constraint_system<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:15:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:679:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  679 |         const mp_limb_t borrow = mpn_sub_n(this->mont_repr.data, modulus.data, this->mont_repr.data, n);
+      |                         ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:658:21: warning: unused variable ‘gn’ [-Wunused-variable]
+  658 |     const mp_size_t gn = mpn_gcdext(g.data, s, &sn, this->mont_repr.data, n, v.data, n);
+      |                     ^~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator+=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/reductions/r1cs_to_qap/r1cs_to_qap.tcc:137:52:   required from ‘libsnark::qap_instance_evaluation<FieldT> libsnark::r1cs_to_qap_instance_map_with_evaluation(const libsnark::r1cs_constraint_system<FieldT>&, const FieldT&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:230:92:   required from ‘libsnark::r1cs_gg_ppzksnark_keypair<ppT> libsnark::r1cs_gg_ppzksnark_generator(libsnark::r1cs_gg_ppzksnark_constraint_system<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_constraint_system<ppT> = libsnark::r1cs_constraint_system<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:15:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:412:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  412 |             const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, modulus.data, n);
+      |                             ^~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.hpp:62,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.hpp:17,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:13,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc: In instantiation of ‘std::istream& libff::operator>>(std::istream&, libff::bigint<n>&) [with long int n = 4; std::istream = std::basic_istream<char>]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:796:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_r); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/relations/variable.tcc:440:12:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::linear_combination<FieldT>&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/relations/constraint_satisfaction_problems/r1cs/r1cs.tcc:78:8:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::r1cs_constraint<FieldT>&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/relations/constraint_satisfaction_problems/r1cs/r1cs.tcc:275:12:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::r1cs_constraint_system<FieldT>&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:85:8:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::r1cs_gg_ppzksnark_proving_key<ppT>&) [with ppT = libff::alt_bn128_pp; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:150:8:   required from ‘T lab2::load_object(const string&) [with T = libsnark::r1cs_gg_ppzksnark_proving_key<libff::alt_bn128_pp>; std::string = std::__cxx11::basic_string<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:27:83:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc:217:15: warning: unused variable ‘limbs_written’ [-Wunused-variable]
+  217 |     mp_size_t limbs_written = mpn_set_str(b.data, s_copy, l, 10);
+      |               ^~~~~~~~~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘void libff::Fp_model<n, modulus>::mul_reduce(const libff::bigint<n>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:784:19:   required from ‘std::ostream& libff::operator<<(std::ostream&, const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::ostream = std::basic_ostream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc:210:9:   required from ‘std::ostream& libff::operator<<(std::ostream&, const libff::Fp2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::ostream = std::basic_ostream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc:169:9:   required from ‘std::ostream& libff::operator<<(std::ostream&, const libff::Fp6_3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::ostream = std::basic_ostream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc:365:9:   required from ‘std::ostream& libff::operator<<(std::ostream&, const libff::Fp12_2over3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::ostream = std::basic_ostream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:102:9:   required from ‘std::ostream& libsnark::operator<<(std::ostream&, const libsnark::r1cs_gg_ppzksnark_verification_key<ppT>&) [with ppT = libff::alt_bn128_pp; std::ostream = std::basic_ostream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:138:9:   required from ‘void lab2::save_object(const string&, const T&) [with T = libsnark::r1cs_gg_ppzksnark_verification_key<libff::alt_bn128_pp>; std::string = std::__cxx11::basic_string<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_setup.cpp:18:26:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:181:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  181 |             const mp_limb_t borrow = mpn_sub(res+n, res+n, n, modulus.data, n);
+      |                             ^~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_prove.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::invert() [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:691:15:   required from ‘libff::Fp_model<n, modulus> libff::Fp_model<n, modulus>::inverse() const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.tcc:54:60:   required from ‘void libfqfft::arithmetic_sequence_domain<FieldT>::FFT(std::vector<T>&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.tcc:37:6:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:679:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  679 |         const mp_limb_t borrow = mpn_sub_n(this->mont_repr.data, modulus.data, this->mont_repr.data, n);
+      |                         ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:658:21: warning: unused variable ‘gn’ [-Wunused-variable]
+  658 |     const mp_size_t gn = mpn_gcdext(g.data, s, &sn, this->mont_repr.data, n, v.data, n);
+      |                     ^~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator-=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/step_radix2_domain.tcc:120:19:   required from ‘void libfqfft::step_radix2_domain<FieldT>::iFFT(std::vector<T>&) [with FieldT = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libfqfft/libfqfft/evaluation_domain/domains/step_radix2_domain.tcc:79:6:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:504:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  504 |         const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, other.mont_repr.data, n);
+      |                         ^~~~~~
+[ 96%] Linking CXX executable zk_prove
+[ 98%] Linking CXX executable zk_setup
+[ 98%] Built target zk_prove
+Consolidate compiler generated dependencies of target zk_verify
+[ 98%] Building CXX object src/CMakeFiles/zk_verify.dir/zk_verify.cpp.o
+[ 98%] Built target zk_setup
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:11:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:206:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  206 |         const mp_limb_t borrow = mpn_sub_1(this->mont_repr.data, modulus.data, n, (mp_limb_t)-x);
+      |                         ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘void libff::Fp_model<n, modulus>::mul_reduce(const libff::bigint<n>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:210:5:   required from ‘libff::Fp_model<n, modulus>::Fp_model(long int, bool) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:112:19:   required from ‘libsnark::protoboard<FieldT> lab2::build_protoboard(long long int, const lab2::WitnessValues*) [with Field = libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:11:61:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:181:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  181 |             const mp_limb_t borrow = mpn_sub(res+n, res+n, n, modulus.data, n);
+      |                             ^~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.hpp:62,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/exponentiation/exponentiation.hpp:17,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:13,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc: In instantiation of ‘std::istream& libff::operator>>(std::istream&, libff::bigint<n>&) [with long int n = 4; std::istream = std::basic_istream<char>]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:796:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc:217:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc:176:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp6_3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc:372:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp12_2over3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:113:8:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::r1cs_gg_ppzksnark_verification_key<ppT>&) [with ppT = libff::alt_bn128_pp; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:150:8:   required from ‘T lab2::load_object(const string&) [with T = libsnark::r1cs_gg_ppzksnark_verification_key<libff::alt_bn128_pp>; std::string = std::__cxx11::basic_string<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:13:88:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/bigint.tcc:217:15: warning: unused variable ‘limbs_written’ [-Wunused-variable]
+  217 |     mp_size_t limbs_written = mpn_set_str(b.data, s_copy, l, 10);
+      |               ^~~~~~~~~~~~~
+In file included from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.hpp:182,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_init.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_g1.hpp:12,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp:10,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/common/default_types/ec_pp.hpp:20,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/common/default_types/r1cs_gg_ppzksnark_pp.hpp:16,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:11,
+                 from /home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:1:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘void libff::Fp_model<n, modulus>::mul_reduce(const libff::bigint<n>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:797:17:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc:217:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc:176:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp6_3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc:372:8:   required from ‘std::istream& libff::operator>>(std::istream&, libff::Fp12_2over3over2_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = (& libff::alt_bn128_modulus_q); std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:113:8:   required from ‘std::istream& libsnark::operator>>(std::istream&, libsnark::r1cs_gg_ppzksnark_verification_key<ppT>&) [with ppT = libff::alt_bn128_pp; std::istream = std::basic_istream<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/common.hpp:150:8:   required from ‘T lab2::load_object(const string&) [with T = libsnark::r1cs_gg_ppzksnark_verification_key<libff::alt_bn128_pp>; std::string = std::__cxx11::basic_string<char>]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:13:88:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:181:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  181 |             const mp_limb_t borrow = mpn_sub(res+n, res+n, n, modulus.data, n);
+      |                             ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator+=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:542:15:   required from ‘libff::Fp_model<n, modulus> libff::Fp_model<n, modulus>::operator+(const libff::Fp_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc:82:36:   required from ‘libff::Fp2_model<n, modulus> libff::Fp2_model<n, modulus>::operator*(const libff::Fp2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc:96:24:   required from ‘libff::Fp6_3over2_model<n, modulus> libff::Fp6_3over2_model<n, modulus>::operator*(const libff::Fp6_3over2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc:97:25:   required from ‘libff::Fp12_2over3over2_model<n, modulus> libff::Fp12_2over3over2_model<n, modulus>::operator*(const libff::Fp12_2over3over2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:560:63:   required from ‘bool libsnark::r1cs_gg_ppzksnark_online_verifier_weak_IC(const libsnark::r1cs_gg_ppzksnark_processed_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:605:59:   required from ‘bool libsnark::r1cs_gg_ppzksnark_online_verifier_strong_IC(const libsnark::r1cs_gg_ppzksnark_processed_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:619:67:   required from ‘bool libsnark::r1cs_gg_ppzksnark_verifier_strong_IC(const libsnark::r1cs_gg_ppzksnark_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:19:88:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:412:29: warning: unused variable ‘borrow’ [-Wunused-variable]
+  412 |             const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, modulus.data, n);
+      |                             ^~~~~~
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc: In instantiation of ‘libff::Fp_model<n, modulus>& libff::Fp_model<n, modulus>::operator-=(const libff::Fp_model<n, modulus>&) [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’:
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:549:15:   required from ‘libff::Fp_model<n, modulus> libff::Fp_model<n, modulus>::operator-(const libff::Fp_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp2.tcc:83:47:   required from ‘libff::Fp2_model<n, modulus> libff::Fp2_model<n, modulus>::operator*(const libff::Fp2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp6_3over2.tcc:96:24:   required from ‘libff::Fp6_3over2_model<n, modulus> libff::Fp6_3over2_model<n, modulus>::operator*(const libff::Fp6_3over2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp12_2over3over2.tcc:97:25:   required from ‘libff::Fp12_2over3over2_model<n, modulus> libff::Fp12_2over3over2_model<n, modulus>::operator*(const libff::Fp12_2over3over2_model<n, modulus>&) const [with long int n = 4; const libff::bigint<n>& modulus = ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_q))]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:560:63:   required from ‘bool libsnark::r1cs_gg_ppzksnark_online_verifier_weak_IC(const libsnark::r1cs_gg_ppzksnark_processed_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:605:59:   required from ‘bool libsnark::r1cs_gg_ppzksnark_online_verifier_strong_IC(const libsnark::r1cs_gg_ppzksnark_processed_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc:619:67:   required from ‘bool libsnark::r1cs_gg_ppzksnark_verifier_strong_IC(const libsnark::r1cs_gg_ppzksnark_verification_key<ppT>&, libsnark::r1cs_gg_ppzksnark_primary_input<ppT>&, const libsnark::r1cs_gg_ppzksnark_proof<ppT>&) [with ppT = libff::alt_bn128_pp; libsnark::r1cs_gg_ppzksnark_primary_input<ppT> = std::vector<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))>, std::allocator<libff::Fp_model<4, ((const libff::bigint<4>&)(& libff::alt_bn128_modulus_r))> > >]’
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/src/zk_verify.cpp:19:88:   required from here
+/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master/depends/libsnark/depends/libff/libff/../libff/algebra/fields/fp.tcc:504:25: warning: unused variable ‘borrow’ [-Wunused-variable]
+  504 |         const mp_limb_t borrow = mpn_sub(scratch, scratch, n+1, other.mont_repr.data, n);
+      |                         ^~~~~~
+[100%] Linking CXX executable zk_verify
+[100%] Built target zk_verify

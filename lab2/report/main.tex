@@ -1,0 +1,657 @@
+% -*- coding: utf-8 -*-
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+
+\usepackage[left=3.17cm, right=3.17cm, top=2.74cm, bottom=2.74cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx,subfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{framed}
+
+\graphicspath{{../src/}}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}
+
+\ctexset{
+  section = {
+    format = \bfseries\zihao{4},
+    name = {,、},
+    number = \chinese{section}
+  },
+  subsection = {
+    format = \bfseries\zihao{-4},
+    name = {（,）},
+    number = \chinese{subsection}
+  },
+  subsubsection = {
+    format = \bfseries\zihao{5},
+    number = \arabic{subsubsection}
+  }
+}
+
+\pagestyle{fancy}
+\lhead{\kaishu 数据安全课程作业}
+\chead{基于 zkSNARK 的零知识证明实验}
+\rhead{\kaishu 学号待填写\ 姓名待填写}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\HRulegrossa}{\rule{\linewidth}{1.2mm}}
+
+\floatname{algorithm}{Algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\lstset{
+breaklines,
+basicstyle=\small\ttfamily,
+escapeinside=``,
+keywordstyle=\color{blue!70}\bfseries,
+commentstyle=\color{red!50!green!50!blue!50},
+stringstyle=\ttfamily,
+showstringspaces=false,
+extendedchars=false,
+linewidth=\textwidth,
+numbers=left,
+numberstyle=\tiny\color{blue!50},
+frame=trbl,
+rulesepcolor=\color{red!20!green!20!blue!20}
+}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\tikz[remember picture, overlay]
+  \node [rotate = #1, scale = #2] at (current page.center)
+    {\textcolor{gray!80!cyan!30!magenta!30}{#3}};
+\vfill}}}
+
+\newcommand{\screenshotplaceholder}[2]{
+\begin{figure}[H]
+    \centering
+    \fbox{
+    \begin{minipage}[c][5.0cm][c]{0.84\textwidth}
+        \centering
+        \textbf{#1}\\[0.8em]
+        #2
+    \end{minipage}}
+    \caption{#1}
+\end{figure}
+}
+
+\newcommand{\reportfigure}[3]{
+\IfFileExists{../src/#2}{
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.72\textheight,keepaspectratio]{../src/#2}
+    \caption{#1}
+\end{figure}
+}{
+\screenshotplaceholder{#1}{#3}
+}
+}
+
+\begin{document}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{titlepage}
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{NKU.png}\\[1cm]
+    \vspace{20mm}
+    {\Huge \heiti 南开大学}\\[0.9cm]
+    {\huge \heiti 网络空间安全学院}\\[0.9cm]
+    {\Large \textbf{《数据安全》课程作业}}\\[0.8cm]
+    \HRule \\[0.9cm]
+    {\LARGE \bfseries 基于 zkSNARK 的零知识证明实验}\\[0.4cm]
+    \HRule \\[2.0cm]
+    \vspace{\fill}
+    \centering
+    {\LARGE 姓名\ :\ \underline{\hspace{4cm}}}\\[0.5cm]
+    {\LARGE 学号\ :\ \underline{\hspace{4cm}}}\\[0.5cm]
+    {\LARGE 专业\ :\ \underline{\hspace{4cm}}}\\[0.5cm]
+    {\LARGE 指导教师\ :\ \underline{\hspace{4cm}}}\\[0.5cm]
+    \vfill
+    {\Large \today}
+    \end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+
+\newpage
+\watermark{60}{10}{NKU}
+\setcounter{page}{1}
+
+\section{实验要求}
+本次实验题目为“零知识证明实践”。需要参考教材第四章及实验 3.1 的思路，完成如下命题的证明生成与验证：
+\[
+x^3 + x + 5 = Out.
+\]
+
+其中，$Out$ 为公开输入，默认取值为 $35$；证明者持有私密解 $x$，在默认演示中使用 $x=3$。实验目标是让验证者相信证明者知道一个满足约束的解，同时不直接暴露该解本身。
+
+结合本次实现，实验边界进一步明确如下：
+\begin{itemize}
+    \item 证明系统采用教材第四章介绍的 zkSNARK 路线，底层使用算术电路与 R1CS 描述命题；
+    \item 证明与验证通过 \texttt{setup / prove / verify} 三阶段完成；
+    \item Windows 侧仓库仅保留提交所需代码、脚本、结果与报告，WSL 中维护独立的构建工作区；
+    \item 若在 WSL 中使用 Python，则统一通过 \texttt{conda} 环境管理，不直接依赖系统 Python 安装实验辅助依赖。
+\end{itemize}
+
+\section{实验仓库与目录结构}
+本次实验的代码、脚本、结果与报告统一组织在本地课程目录下，目录划分如下：
+\begin{itemize}
+    \item \texttt{实验/lab2/zk\_lab/}：libsnark 证明代码；
+    \item \texttt{实验/lab2/scripts/}：PowerShell 入口脚本与 WSL shell 脚本；
+    \item \texttt{实验/lab2/results/}：证明密钥、验证密钥、证明文件与日志；
+    \item \texttt{实验/lab2/report/}：LaTeX 报告；
+    \item \texttt{实验/lab2/src/}：截图清单与占位说明。
+\end{itemize}
+
+如果后续需要提交到 GitHub，仅需将 \texttt{实验/lab2/} 整体上传即可。本报告默认以本地路径为准进行撰写与说明。
+
+\section{实验原理}
+
+\subsection{零知识证明的基本思想}
+零知识证明（Zero-Knowledge Proof, ZKP）允许证明者在不泄露秘密本身的前提下，使验证者相信某个公开命题成立。教材中给出的定义可以概括为：证明者知道一个使得公开谓词 $C(x)=1$ 的秘密输入 $x$，并向验证者证明“自己确实知道它”，而不是把该秘密直接交给验证者。
+
+零知识证明通常强调以下三个性质：
+\begin{itemize}
+    \item \textbf{完备性}：若证明者确实知道合法见证，验证应当以高概率成功；
+    \item \textbf{可靠性}：若证明者不知道见证，则伪造证明应当非常困难；
+    \item \textbf{零知识性}：验证者只能获得“命题成立”这一事实，而不能得到关于见证本身的额外信息。
+\end{itemize}
+
+\subsection{zkSNARK 与 libsnark}
+zkSNARK 是一类典型的非交互式零知识证明技术，特点是证明短、验证快且适合公开验证。教材示例中使用 \texttt{libsnark} 框架来完成开发，该框架提供了：
+\begin{itemize}
+    \item 约束系统定义；
+    \item 证明密钥与验证密钥生成；
+    \item 证明构造；
+    \item 证明验证。
+\end{itemize}
+
+在工程上，本实验遵循如下流程：
+\begin{enumerate}
+    \item 将待证明命题转成算术电路；
+    \item 将算术电路写成 R1CS 约束；
+    \item 在 \texttt{setup} 阶段生成 \texttt{pk.raw} 和 \texttt{vk.raw}；
+    \item 在 \texttt{prove} 阶段使用见证构造 \texttt{proof.raw}；
+    \item 在 \texttt{verify} 阶段使用公开输入和验证密钥检查证明是否成立。
+\end{enumerate}
+
+\subsection{算术电路与 R1CS 约束}
+本实验证明的命题是
+\[
+x^3 + x + 5 = Out.
+\]
+为了使用 zkSNARK，需要将其拆成仅包含加法和乘法的中间变量形式。设中间量如下：
+\[
+x\_square = x \cdot x,
+\]
+\[
+x\_cube = x\_square \cdot x,
+\]
+\[
+sum\_with\_x = x\_cube + x,
+\]
+\[
+expr\_out = sum\_with\_x + 5.
+\]
+
+最后要求：
+\[
+expr\_out = Out.
+\]
+
+因此，本实验对应的 R1CS 约束固定为表 \ref{tab:r1cs} 所示。
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cl}
+        \toprule
+        编号 & 约束 \\
+        \midrule
+        C1 & $x \cdot x = x\_square$ \\
+        C2 & $x\_square \cdot x = x\_cube$ \\
+        C3 & $(x\_cube + x)\cdot 1 = sum\_with\_x$ \\
+        C4 & $(sum\_with\_x + 5)\cdot 1 = expr\_out$ \\
+        C5 & $expr\_out \cdot 1 = Out$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{实验命题对应的 R1CS 约束}
+    \label{tab:r1cs}
+\end{table}
+
+在本实现中：
+\begin{itemize}
+    \item 公有输入只有一个：\texttt{out}；
+    \item 私有见证包括：\texttt{x}、\texttt{x\_square}、\texttt{x\_cube}、\texttt{sum\_with\_x}、\texttt{expr\_out}。
+\end{itemize}
+
+\subsection{默认示例的见证计算}
+当默认示例取 $x=3$ 时，可得到：
+\[
+x\_square = 3^2 = 9,
+\quad
+x\_cube = 3^3 = 27,
+\]
+\[
+sum\_with\_x = 27 + 3 = 30,
+\quad
+expr\_out = 30 + 5 = 35.
+\]
+因此在默认演示下，公开输入确实可以设为 $Out=35$，验证者只看到公开输入和证明文件，不需要获得 $x=3$ 本身。
+
+\section{实验过程}
+
+\subsection{实验环境与工作目录设计}
+本实验同时使用 Windows 仓库与 WSL 独立工作区。这样做的目的是让提交内容与外部依赖隔离，避免把庞大的 \texttt{libsnark} 源码树直接放入课程仓库。
+
+Windows 仓库目录为：
+\begin{lstlisting}[title=Windows 侧仓库结构,frame=trbl]
+lab2/
+|- zk_lab/
+|- scripts/
+|- results/
+|- report/
+|- src/
+`- tests/
+\end{lstlisting}
+
+WSL 侧固定工作目录为：
+\begin{lstlisting}[title=WSL 侧工作目录,frame=trbl]
+/home/eric/workspace/data-security-lab2/
+|- env/
+|- libsnark-src/
+|- build/
+|- artifacts/
+`- logs/
+\end{lstlisting}
+
+\reportfigure{WSL 独立工作目录创建成功}{01-wsl-workspace.png}{此处插入图 1：展示 \texttt{/home/eric/workspace/data-security-lab2/} 及其子目录已经创建完成。}
+
+\subsection{conda 环境与 libsnark 环境初始化}
+考虑到用户要求“WSL 中如果使用 Python，则建议用 conda 管理环境”，本实验的初始化脚本在 WSL 中固定创建环境 \texttt{datasec-lab2-zk}。即使主证明程序使用 C++/libsnark，辅助检查、日志整理和后续可扩展脚本也统一在该环境内运行。
+
+PowerShell 入口命令如下：
+\begin{lstlisting}[title=初始化 WSL 环境,frame=trbl]
+.\scripts\setup_wsl_env.ps1
+\end{lstlisting}
+
+该脚本内部会完成以下工作：
+\begin{enumerate}
+    \item 修正 WSL 中异常的 \texttt{HOME} 环境变量；
+    \item 安装 \texttt{build-essential}、\texttt{cmake}、\texttt{git} 等系统依赖；
+    \item 安装 Miniconda；
+    \item 创建 \texttt{datasec-lab2-zk} 环境；
+    \item 优先尝试准备 Windows 侧缓存；若因 Windows 路径限制无法完整签出，则自动回退到 WSL 中直接克隆 \texttt{libsnark\_abc} 及其子模块。
+\end{enumerate}
+
+本次实际运行完成后，\texttt{env/environment.txt} 中记录的关键环境信息如下：
+\begin{lstlisting}[title=WSL 环境摘要,frame=trbl]
+OS_PRETTY_NAME=Ubuntu 22.04.5 LTS
+GENERATED_AT=2026-04-21 18:05:57 CST
+HOME=/home/eric
+WORKSPACE_ROOT=/home/eric/workspace/data-security-lab2
+CONDA_ROOT=/home/eric/miniconda3
+CONDA_ENV_NAME=datasec-lab2-zk
+CONDA_PYTHON=/home/eric/miniconda3/envs/datasec-lab2-zk/bin/python
+PYTHON_VERSION=Python 3.10.20
+GIT=/usr/bin/git
+CMAKE=/usr/bin/cmake
+CXX=/usr/bin/c++
+LIBSNARK_ROOT=/home/eric/workspace/data-security-lab2/libsnark-src/libsnark_abc-master
+\end{lstlisting}
+
+\reportfigure{conda 环境创建与激活}{02-conda-env.png}{此处插入图 2：展示 \texttt{datasec-lab2-zk} 环境创建完成，或 \texttt{conda} 环境信息输出。}
+
+\reportfigure{libsnark 环境准备成功}{03-libsnark-ready.png}{此处插入图 3：展示 \texttt{libsnark\_abc-master} 已经拉取完成，并具备后续编译条件。}
+
+\subsection{证明代码实现}
+证明代码放在 \texttt{zk\_lab/} 目录，核心文件如下：
+\begin{itemize}
+    \item \texttt{common.hpp}：定义曲线类型、约束系统、见证结构、序列化辅助函数；
+    \item \texttt{zk\_setup.cpp}：生成证明密钥与验证密钥；
+    \item \texttt{zk\_prove.cpp}：根据给定见证生成证明；
+    \item \texttt{zk\_verify.cpp}：读取验证密钥与证明文件，完成验证。
+\end{itemize}
+
+\texttt{common.hpp} 中的实现重点是：先在 \texttt{protoboard} 上分配公有输入和私有变量，再按表 \ref{tab:r1cs} 依次加入约束。这样在 \texttt{setup / prove / verify} 三个阶段都可以复用同一套电路定义。
+
+\subsection{关键代码展示}
+结合往年实验报告的写法，本报告补充展示三段最能体现本实验核心逻辑的代码，分别对应“见证计算与约束构造”“证明生成”“证明验证”三个环节。
+
+\begin{lstlisting}[title=关键代码 1：见证计算与 R1CS 约束构造,language=C++,frame=trbl]
+inline WitnessValues build_witness(const long long x)
+{
+    WitnessValues witness{};
+    witness.x = x;
+    witness.x_square = x * x;
+    witness.x_cube = witness.x_square * x;
+    witness.sum_with_x = witness.x_cube + x;
+    witness.expr_out = witness.sum_with_x + 5;
+    return witness;
+}
+
+template<typename Field>
+inline libsnark::protoboard<Field> build_protoboard(
+    const long long public_out,
+    const WitnessValues *witness = nullptr)
+{
+    libsnark::protoboard<Field> pb;
+    ...
+    pb.set_input_sizes(1);
+    pb.val(out) = Field(public_out);
+
+    pb.add_r1cs_constraint(libsnark::r1cs_constraint<Field>(x, x, x_square));
+    pb.add_r1cs_constraint(libsnark::r1cs_constraint<Field>(x_square, x, x_cube));
+    pb.add_r1cs_constraint(libsnark::r1cs_constraint<Field>(x_cube + x, 1, sum_with_x));
+    pb.add_r1cs_constraint(libsnark::r1cs_constraint<Field>(sum_with_x + 5, 1, expr_out));
+    pb.add_r1cs_constraint(libsnark::r1cs_constraint<Field>(expr_out, 1, out));
+    ...
+}
+\end{lstlisting}
+
+上述代码首先根据秘密输入 \texttt{x} 展开中间见证值，然后在 \texttt{protoboard} 上依次加入 5 条 R1CS 约束。其中 \texttt{pb.set\_input\_sizes(1)} 明确规定只有 \texttt{out} 属于公有输入，其余变量均作为私有见证参与证明。
+
+\begin{lstlisting}[title=关键代码 2：证明阶段的 witness 检查与 proof 生成,language=C++,frame=trbl]
+const auto witness = lab2::build_witness(x_value);
+
+if (!lab2::witness_matches_statement(witness, out_value)) {
+    std::cerr << "Witness does not satisfy the public statement." << std::endl;
+    return EXIT_FAILURE;
+}
+
+const auto pb = lab2::build_protoboard<lab2::FieldT>(out_value, &witness);
+if (!pb.is_satisfied()) {
+    std::cerr << "Constraint system is not satisfied." << std::endl;
+    return EXIT_FAILURE;
+}
+
+const auto proof = libsnark::r1cs_gg_ppzksnark_prover<lab2::ppT>(
+    pk,
+    pb.primary_input(),
+    pb.auxiliary_input());
+\end{lstlisting}
+
+这段代码体现了证明阶段的两个关键检查：其一是 witness 与公开命题是否一致，其二是完整约束系统是否满足。只有两项检查都通过后，程序才会调用 \texttt{prover} 生成 \texttt{proof.raw}。
+
+\begin{lstlisting}[title=关键代码 3：验证阶段的核心调用,language=C++,frame=trbl]
+const auto pb = lab2::build_protoboard<lab2::FieldT>(out_value, nullptr);
+const bool verified = libsnark::r1cs_gg_ppzksnark_verifier_strong_IC<lab2::ppT>(
+    vk,
+    pb.primary_input(),
+    proof);
+
+std::cout << "Verification result: " << (verified ? 1 : 0) << std::endl;
+\end{lstlisting}
+
+验证阶段不再接触私有 witness，而是只使用验证密钥、公开输入和证明文件完成检查。这也是本实验能够体现“公开验证而不泄露秘密”的关键所在。
+
+\subsection{编译流程}
+编译命令如下：
+\begin{lstlisting}[title=编译证明程序,frame=trbl]
+.\scripts\build_lab2.ps1
+\end{lstlisting}
+
+该脚本会：
+\begin{enumerate}
+    \item 将 \texttt{zk\_lab/} 中的源码同步到 WSL 工作区中的 \texttt{libsnark\_abc-master/src/}；
+    \item 在外部 bundle 的 \texttt{src/CMakeLists.txt} 中追加 \texttt{zk\_setup}、\texttt{zk\_prove}、\texttt{zk\_verify} 三个目标；
+    \item 调用 CMake 完成编译；
+    \item 将生成日志拷回 \texttt{results/logs/build.log}。
+\end{enumerate}
+
+本次编译成功后，WSL 中生成的可执行文件为：
+\begin{lstlisting}[title=编译生成的二进制文件,frame=trbl]
+/home/eric/workspace/data-security-lab2/build/src/zk_setup
+/home/eric/workspace/data-security-lab2/build/src/zk_prove
+/home/eric/workspace/data-security-lab2/build/src/zk_verify
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \subfloat[WSL 中执行编译脚本并输出完成提示]{
+        \includegraphics[width=0.48\textwidth]{../src/6.png}
+    }
+    \hfill
+    \subfloat[编译后生成的三个可执行文件]{
+        \includegraphics[width=0.48\textwidth]{../src/7.png}
+    }
+    \caption{编译阶段的终端输出与产物检查}
+\end{figure}
+
+\subsection{正确样例运行流程}
+默认演示采用公开输入 \texttt{Out=35} 和私密输入 \texttt{x=3}。PowerShell 侧运行命令为：
+\begin{lstlisting}[title=运行正确样例,frame=trbl]
+.\scripts\run_demo.ps1 -X 3 -Out 35
+\end{lstlisting}
+
+内部执行顺序为：
+\begin{enumerate}
+    \item \texttt{zk\_setup --artifacts-dir ... --out 35}
+    \item \texttt{zk\_prove --artifacts-dir ... --x 3 --out 35}
+    \item \texttt{zk\_verify --artifacts-dir ... --out 35}
+\end{enumerate}
+
+生成的主要文件包括：
+\begin{itemize}
+    \item \texttt{results/artifacts/pk.raw}
+    \item \texttt{results/artifacts/vk.raw}
+    \item \texttt{results/artifacts/proof.raw}
+    \item \texttt{results/logs/setup.log}
+    \item \texttt{results/logs/prove\_valid.log}
+    \item \texttt{results/logs/verify\_valid.log}
+\end{itemize}
+
+根据本次真实运行日志，可以提取出以下关键结果：
+\begin{lstlisting}[title=setup/prove/verify 关键输出摘录,frame=trbl]
+=== Setup ===
+Constraint count: 5
+Public input size: 1
+Saved proving key to: /home/eric/workspace/data-security-lab2/artifacts/pk.raw
+Saved verification key to: /home/eric/workspace/data-security-lab2/artifacts/vk.raw
+
+=== Prove ===
+Witness x = 3
+x_square = 9
+x_cube = 27
+sum_with_x = 30
+expr_out = 35
+Primary input:
+35
+Auxiliary input:
+3
+9
+27
+30
+35
+Saved proof to: /home/eric/workspace/data-security-lab2/artifacts/proof.raw
+
+=== Verify ===
+Verification result: 1
+\end{lstlisting}
+
+\reportfigure{正确样例脚本执行完成}{8.png}{此处插入补充截图：展示 \texttt{wsl\_run\_demo.sh} 执行结束并输出 \texttt{Valid demo finished}。}
+
+\reportfigure{zk\_setup 生成密钥}{04-setup.png}{此处插入图 4：展示 \texttt{setup.log} 中密钥生成成功、约束数量和输出文件路径。}
+
+\reportfigure{zk\_prove 成功生成证明}{05-prove-valid.png}{此处插入图 5：展示 \texttt{prove\_valid.log} 中 witness、primary input 和证明生成完成的信息。}
+
+\reportfigure{zk\_verify 验证结果为 1}{06-verify-valid.png}{此处插入图 6：展示 \texttt{verify\_valid.log} 中 \texttt{Verification result: 1}。}
+
+\subsection{错误样例运行流程}
+为了验证系统的可靠性，本实验还执行两个负样例：
+\begin{enumerate}
+    \item 错误 witness：令 \texttt{x=4}、\texttt{out=35}，则约束不成立，证明阶段应失败；
+    \item 错误公开输入：先用 \texttt{x=3}、\texttt{out=35} 生成合法证明，再用 \texttt{out=36} 验证，结果应失败。
+\end{enumerate}
+
+PowerShell 入口命令如下：
+\begin{lstlisting}[title=运行负样例,frame=trbl]
+.\scripts\run_negative_cases.ps1
+\end{lstlisting}
+
+本次实际运行的负样例日志摘要如下：
+\begin{lstlisting}[title=负样例关键输出摘录,frame=trbl]
+=== Prove ===
+Public statement: x^3 + x + 5 = Out
+Out = 35
+Witness x = 4
+x_square = 16
+x_cube = 64
+sum_with_x = 68
+expr_out = 73
+Witness does not satisfy the public statement.
+
+=== Verify ===
+Public statement: x^3 + x + 5 = Out
+Out = 36
+Verification result: 0
+\end{lstlisting}
+
+\reportfigure{负样例脚本执行完成}{12.png}{此处插入补充截图：展示 \texttt{wsl\_run\_negative\_cases.sh} 执行结束并输出 \texttt{Negative cases finished}。}
+
+\reportfigure{错误 witness 被拒绝}{07-prove-invalid.png}{此处插入图 7：展示 \texttt{prove\_invalid.log} 中 witness 不满足公开命题或约束系统不满足的提示。}
+
+\reportfigure{错误公开输入验证为 0}{08-verify-wrong-out.png}{此处插入图 8：展示 \texttt{verify\_wrong\_out.log} 中验证失败的结果。}
+
+\section{实验结果与分析}
+
+\subsection{结果文件}
+从 WSL 工作区回收到仓库的结果文件位于：
+\begin{itemize}
+    \item \texttt{results/artifacts/}
+    \item \texttt{results/logs/}
+\end{itemize}
+
+这些文件分别对应 \texttt{setup}、\texttt{prove}、\texttt{verify} 三个阶段及其负样例运行日志，便于直接引用到报告或后续答辩展示中。
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        文件 & 大小（字节） & 说明 \\
+        \midrule
+        \texttt{pk.raw} & 1209 & proving key \\
+        \texttt{vk.raw} & 1148 & verification key \\
+        \texttt{proof.raw} & 137 & zkSNARK proof \\
+        \texttt{build.log} & 63668 & 编译日志 \\
+        \texttt{setup.log} & 6970 & setup 阶段日志 \\
+        \texttt{prove\_valid.log} & 5754 & 正确 witness 证明日志 \\
+        \texttt{verify\_valid.log} & 4835 & 正确公开输入验证日志 \\
+        \texttt{prove\_invalid.log} & 176 & 错误 witness 日志 \\
+        \texttt{verify\_wrong\_out.log} & 4876 & 错误公开输入验证日志 \\
+        \bottomrule
+    \end{tabular}
+    \caption{本次实验回收的实际结果文件}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \subfloat[结果文件已从 WSL 工作区回收到仓库目录]{
+        \includegraphics[width=0.48\textwidth]{../src/15.png}
+    }
+    \hfill
+    \subfloat[在 conda 环境中执行 \texttt{pytest}，测试全部通过]{
+        \includegraphics[width=0.48\textwidth]{../src/16.png}
+    }
+    \caption{实验结果文件检查与测试验证}
+\end{figure}
+
+\subsection{正确样例分析}
+对于正确样例 \texttt{x=3, out=35}，系统应呈现如下行为：
+\begin{itemize}
+    \item \texttt{setup} 阶段生成 \texttt{pk.raw} 与 \texttt{vk.raw}；
+    \item \texttt{prove} 阶段先检查 witness 与公开命题一致，再构造证明 \texttt{proof.raw}；
+    \item \texttt{verify} 阶段输出 \texttt{Verification result: 1}。
+\end{itemize}
+
+结合 \texttt{setup.log}、\texttt{prove\_valid.log} 与 \texttt{verify\_valid.log} 可知：
+\begin{itemize}
+    \item 电路中的约束数量为 5，与设计的 R1CS 约束完全一致；
+    \item 公有输入规模为 1，正好对应唯一公开量 \texttt{Out}；
+    \item 正确 witness 展开后得到的辅助输入依次为 \texttt{3, 9, 27, 30, 35}；
+    \item 最终验证输出为 \texttt{1}，说明证明者确实可以在不公开 $x$ 的情况下，让验证者确认自己“知道一个使约束成立的见证”。
+\end{itemize}
+
+\subsection{负样例分析}
+两个负样例分别说明：
+\begin{itemize}
+    \item 若 witness 自身不满足约束，则证明阶段就会被阻止，不能继续生成合法证明；
+    \item 即使已经存在一份合法证明，只要公开输入发生变化，验证仍会失败。
+\end{itemize}
+
+更具体地说：
+\begin{itemize}
+    \item 错误 witness 的日志直接输出 \texttt{Witness does not satisfy the public statement.}；
+    \item 错误公开输入的日志输出 \texttt{Verification result: 0}，并伴随 \texttt{QAP divisibility check failed.}。
+\end{itemize}
+
+因此，本实验同时展示了完备性与可靠性的直观效果。
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        场景 & 输入 & 预期结果 \\
+        \midrule
+        正确样例 & $x=3$, $Out=35$ & 验证通过，输出 1 \\
+        错误 witness & $x=4$, $Out=35$ & 证明阶段失败 \\
+        错误公开输入 & proof for $(3,35)$, verify with $Out=36$ & 验证失败，输出 0 \\
+        \bottomrule
+    \end{tabular}
+    \caption{实验样例与预期输出}
+\end{table}
+
+\section{实验心得与体会}
+通过本次实验，可以更加直观地认识到 zkSNARK 的工程实现并不是直接对原始数学公式做证明，而是需要先把命题拆解为算术电路，再进一步转化为标准化的 R1CS 约束系统。只有完成这种“问题表达方式”的转换，后续的 \texttt{setup / prove / verify} 三阶段流程才具有明确的输入、输出与验证语义。
+
+与此同时，本实验也说明了实验环境规划对于课程作业的重要性。在 Windows 仓库、WSL 工作区、conda 环境和外部依赖源码并存的条件下，如果缺少统一的脚本入口与结果回收路径，日志、截图和中间产物很容易混乱。通过本次实现中对工作区、构建目录与结果目录的分离，可以显著提升实验复现性，也使最终报告整理更加规范。
+
+总体而言，本实验将“零知识证明”从教材中的概念描述落实为一套可执行、可验证、可复现实验流程，对后续进一步学习范围证明、隐私计算证明以及通用电路证明具有较强的铺垫作用。
+
+\end{document}

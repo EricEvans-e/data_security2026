@@ -1,0 +1,17 @@
+.pytest_cache/
+**/.pytest_cache/
+__pycache__/
+**/__pycache__/
+tmp/
+**/tmp/
+
+lab1/demo_aes.key
+lab2/手动运行与截图指南.md
+
+**/report/*.aux
+**/report/*.bbl
+**/report/*.blg
+**/report/*.log
+**/report/*.out
+**/report/*.toc
+**/report/_render_check/

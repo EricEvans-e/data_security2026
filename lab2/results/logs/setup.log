@@ -1,0 +1,90 @@
+=== Setup ===
+Public statement: x^3 + x + 5 = Out
+Out = 35
+(enter) Call to r1cs_gg_ppzksnark_generator	[             ]	(1776766481.2855s x0.00 from start)
+  (enter) Call to r1cs_constraint_system::swap_AB_if_beneficial	[             ]	(1776766481.2855s x0.00 from start)
+    (enter) Estimate densities                 	[             ]	(1776766481.2855s x0.00 from start)
+      * Non-zero A-count (estimate): 6
+      * Non-zero B-count (estimate): 2
+    (leave) Estimate densities                 	[0.0000s x1.01]	(1776766481.2855s x0.00 from start)
+    Swap is not beneficial, not performing
+  (leave) Call to r1cs_constraint_system::swap_AB_if_beneficial	[0.0000s x1.00]	(1776766481.2855s x0.00 from start)
+  (enter) Call to r1cs_to_qap_instance_map_with_evaluation	[             ]	(1776766481.2856s x0.00 from start)
+    (enter) Compute evaluations of A, B, C, H at t	[             ]	(1776766481.2857s x0.00 from start)
+    (leave) Compute evaluations of A, B, C, H at t	[0.0000s x1.00]	(1776766481.2857s x0.00 from start)
+  (leave) Call to r1cs_to_qap_instance_map_with_evaluation	[0.0001s x1.00]	(1776766481.2857s x0.00 from start)
+  * QAP number of variables: 6
+  * QAP pre degree: 5
+  * QAP degree: 8
+  * QAP number of input variables: 1
+  (enter) Compute query densities            	[             ]	(1776766481.2857s x0.00 from start)
+  (leave) Compute query densities            	[0.0000s x1.03]	(1776766481.2857s x0.00 from start)
+  (enter) Compute gamma_ABC for R1CS verification key	[             ]	(1776766481.2857s x0.00 from start)
+  (leave) Compute gamma_ABC for R1CS verification key	[0.0000s x1.01]	(1776766481.2857s x0.00 from start)
+  (enter) Compute L query for R1CS proving key	[             ]	(1776766481.2857s x0.00 from start)
+  (leave) Compute L query for R1CS proving key	[0.0000s x1.08]	(1776766481.2857s x0.00 from start)
+  (enter) Generating G1 MSM window table     	[             ]	(1776766481.2857s x0.00 from start)
+    Choosing window size 3 for 15 elements
+    * G1 window: 3
+  (leave) Generating G1 MSM window table     	[0.0006s x1.00]	(1776766481.2864s x0.00 from start)
+  (enter) Generating G2 MSM window table     	[             ]	(1776766481.2864s x0.00 from start)
+    Choosing window size 1 for 2 elements
+    * G2 window: 1
+  (leave) Generating G2 MSM window table     	[0.0019s x1.00]	(1776766481.2883s x0.00 from start)
+  (enter) Generate R1CS proving key          	[             ]	(1776766481.2883s x0.00 from start)
+    (enter) Generate queries                   	[             ]	(1776766481.2901s x0.00 from start)
+      (enter) Compute the A-query                	[             ]	(1776766481.2901s x0.00 from start)
+      . DONE!
+      (leave) Compute the A-query                	[0.0004s x1.00]	(1776766481.2904s x0.00 from start)
+      (enter) Compute the B-query                	[             ]	(1776766481.2905s x0.00 from start)
+      Non-zero coordinate count: 2/7 (28.57%)
+      (leave) Compute the B-query                	[0.0007s x1.00]	(1776766481.2912s x0.00 from start)
+      (enter) Compute the H-query                	[             ]	(1776766481.2912s x0.00 from start)
+      . DONE!
+      (leave) Compute the H-query                	[0.0003s x1.00]	(1776766481.2915s x0.00 from start)
+      (enter) Compute the L-query                	[             ]	(1776766481.2915s x0.00 from start)
+      . DONE!
+      (leave) Compute the L-query                	[0.0002s x0.99]	(1776766481.2917s x0.00 from start)
+    (leave) Generate queries                   	[0.0017s x1.00]	(1776766481.2917s x0.00 from start)
+  (leave) Generate R1CS proving key          	[0.0034s x1.00]	(1776766481.2917s x0.00 from start)
+  (enter) Generate R1CS verification key     	[             ]	(1776766481.2917s x0.00 from start)
+    (enter) Call to alt_bn128_ate_reduced_pairing	[             ]	(1776766481.2917s x0.00 from start)
+      (enter) Call to alt_bn128_ate_pairing      	[             ]	(1776766481.2917s x0.00 from start)
+        (enter) Call to alt_bn128_ate_precompute_G1	[             ]	(1776766481.2917s x0.00 from start)
+        (leave) Call to alt_bn128_ate_precompute_G1	[0.0000s x1.03]	(1776766481.2917s x0.00 from start)
+        (enter) Call to alt_bn128_ate_precompute_G2	[             ]	(1776766481.2918s x0.00 from start)
+        (leave) Call to alt_bn128_ate_precompute_G2	[0.0003s x1.00]	(1776766481.2921s x0.00 from start)
+        (enter) Call to alt_bn128_ate_miller_loop  	[             ]	(1776766481.2921s x0.00 from start)
+        (leave) Call to alt_bn128_ate_miller_loop  	[0.0006s x1.00]	(1776766481.2927s x0.00 from start)
+      (leave) Call to alt_bn128_ate_pairing      	[0.0009s x1.00]	(1776766481.2927s x0.00 from start)
+      (enter) Call to alt_bn128_final_exponentiation	[             ]	(1776766481.2927s x0.00 from start)
+        (enter) Call to alt_bn128_final_exponentiation_first_chunk	[             ]	(1776766481.2927s x0.00 from start)
+        (leave) Call to alt_bn128_final_exponentiation_first_chunk	[0.0000s x1.01]	(1776766481.2927s x0.00 from start)
+        (enter) Call to alt_bn128_final_exponentiation_last_chunk	[             ]	(1776766481.2927s x0.00 from start)
+          (enter) Call to alt_bn128_exp_by_neg_z     	[             ]	(1776766481.2927s x0.00 from start)
+          (leave) Call to alt_bn128_exp_by_neg_z     	[0.0003s x1.00]	(1776766481.2930s x0.00 from start)
+          (enter) Call to alt_bn128_exp_by_neg_z     	[             ]	(1776766481.2930s x0.00 from start)
+          (leave) Call to alt_bn128_exp_by_neg_z     	[0.0003s x1.00]	(1776766481.2933s x0.00 from start)
+          (enter) Call to alt_bn128_exp_by_neg_z     	[             ]	(1776766481.2933s x0.00 from start)
+          (leave) Call to alt_bn128_exp_by_neg_z     	[0.0003s x1.00]	(1776766481.2936s x0.00 from start)
+        (leave) Call to alt_bn128_final_exponentiation_last_chunk	[0.0009s x1.00]	(1776766481.2936s x0.00 from start)
+      (leave) Call to alt_bn128_final_exponentiation	[0.0010s x1.00]	(1776766481.2937s x0.00 from start)
+    (leave) Call to alt_bn128_ate_reduced_pairing	[0.0019s x1.00]	(1776766481.2937s x0.00 from start)
+    (enter) Encode gamma_ABC for R1CS verification key	[             ]	(1776766481.2943s x0.00 from start)
+      . DONE!
+    (leave) Encode gamma_ABC for R1CS verification key	[0.0002s x1.00]	(1776766481.2945s x0.00 from start)
+  (leave) Generate R1CS verification key     	[0.0028s x1.00]	(1776766481.2945s x0.00 from start)
+(leave) Call to r1cs_gg_ppzksnark_generator	[0.0090s x1.00]	(1776766481.2945s x0.00 from start)
+* G1 elements in PK: 27
+* Non-zero G1 elements in PK: 22
+* G2 elements in PK: 8
+* Non-zero G2 elements in PK: 3
+* PK size in bits: 7265
+* G1 elements in VK: 1
+* G2 elements in VK: 2
+* GT elements in VK: 1
+* VK size in bits: 1592
+Constraint count: 5
+Public input size: 1
+Saved proving key to: /home/eric/workspace/data-security-lab2/artifacts/pk.raw
+Saved verification key to: /home/eric/workspace/data-security-lab2/artifacts/vk.raw
