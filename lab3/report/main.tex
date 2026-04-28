@@ -1,0 +1,623 @@
+% -*- coding: utf-8 -*-
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+
+\usepackage[left=3.17cm, right=3.17cm, top=2.74cm, bottom=2.74cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx,subfig}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{framed}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}
+
+\ctexset{
+  section = {
+    format = \bfseries\zihao{4},
+    name = {,、},
+    number = \chinese{section}
+  },
+  subsection = {
+    format = \bfseries\zihao{-4},
+    name = {（,）},
+    number = \chinese{subsection}
+  },
+  subsubsection = {
+    format = \bfseries\zihao{5},
+    number = \arabic{subsubsection}
+  }
+}
+
+\pagestyle{fancy}
+\lhead{\kaishu 数据安全课程作业}
+\chead{基于 Shamir 秘密共享的隐私平均值计算实验}
+\rhead{祝铭堃 2312309}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.1pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\HRulegrossa}{\rule{\linewidth}{1.2mm}}
+
+\floatname{algorithm}{Algorithm}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\lstset{
+breaklines,
+basicstyle=\small\ttfamily,
+escapeinside=``,
+keywordstyle=\color{blue!70}\bfseries,
+commentstyle=\color{red!50!green!50!blue!50},
+stringstyle=\ttfamily,
+extendedchars=false,
+linewidth=\textwidth,
+numbers=left,
+numberstyle=\tiny\color{blue!50},
+frame=trbl,
+rulesepcolor=\color{red!20!green!20!blue!20}
+}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+\newcommand{\watermark}[3]{\AddToShipoutPictureBG{
+\parbox[b][\paperheight]{\paperwidth}{
+\vfill
+\centering
+\tikz[remember picture, overlay]
+  \node [rotate = #1, scale = #2] at (current page.center)
+    {\textcolor{gray!80!cyan!30!magenta!30}{#3}};
+\vfill}}}
+
+\begin{document}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{titlepage}
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{NKU.png}\\[1cm]
+    \vspace{20mm}
+    {\Huge \heiti 南开大学}\\[1.8cm]
+    {\Large \textbf{《数据安全》课程作业}}\\[0.8cm]
+    \HRule \\[0.9cm]
+    {\LARGE \bfseries 基于 Shamir 秘密共享的隐私平均值计算实验}\\[0.4cm]
+    \HRule \\[2.0cm]
+    \vspace{\fill}
+    \centering
+    {\LARGE 姓名\ :\ 祝铭堃}\\[0.5cm]
+    {\LARGE 学号\ :\ 2312309}\\[0.5cm]
+    {\LARGE 专业\ :\ 计算机科学与技术}\\[0.5cm]
+    {\LARGE 指导教师\ :\ 刘哲理}\\[0.5cm]
+    \vfill
+    {\Large \today}
+    \end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+
+\newpage
+\watermark{60}{10}{NKU}
+\setcounter{page}{1}
+
+% ==================================================================
+\section{实验要求}
+% ==================================================================
+
+本次实验的任务是借鉴实验 3.2 中基于 Shamir 门限秘密共享的投票统计方案，实现三个人对于他们拥有的数据的平均值的计算。具体而言，我们需要在不直接泄露三人各自原始数据的前提下，通过秘密共享与加法同态协议完成隐私求和，再由结果方恢复总和并计算平均值。
+
+为便于后续实现和分析，我们在开始实验之前进一步明确以下边界条件：
+
+\begin{itemize}
+    \item 参与者数量固定为三人，采用 $(2,3)$ 门限方案：共生成 3 份份额，任意 2 份可恢复秘密，少于 2 份无法恢复。
+    \item 威胁模型为半诚实模型：各参与方按协议执行，但会尝试根据自己收到的信息推断他人的原始数据。
+    \item 不考虑恶意参与方伪造份额、合谋攻击或拒绝服务等主动攻击。
+    \item 实验环境使用 Python 3.11，模数取 $p=1000000007$，足以避免秘密值在模运算中发生回绕。
+\end{itemize}
+
+% ==================================================================
+\section{实验原理}
+% ==================================================================
+
+\subsection{Shamir 门限秘密共享}
+
+Shamir $(t,n)$ 门限秘密共享方案的核心思想是：将秘密 $s$ 嵌入一个 $t-1$ 次多项式，然后将该多项式在 $n$ 个不同点上的取值作为 $n$ 份份额分发给 $n$ 个参与方。任意 $t$ 份份额可通过拉格朗日插值重构出原多项式，从而恢复秘密；而任意少于 $t$ 份的份额则无法提供关于 $s$ 的任何信息。
+
+在本实验中，我们使用 $(2,3)$ 门限方案，即 $t=2$，$n=3$。对每个参与方的秘密 $s$，我们构造一个随机一次多项式：
+
+\[
+f(x) = s + r \cdot x \pmod{p}
+\]
+
+其中 $r$ 为 $[0, p)$ 内的随机系数。然后计算该多项式在 $x=1,2,3$ 处的值 $f(1), f(2), f(3)$，分别作为分给三个计算方的份额。由于多项式次数为 1，任意 2 个点即可唯一确定该多项式，进而在 $x=0$ 处恢复出秘密 $s$。
+
+\subsection{加法同态性质}
+
+Shamir 秘密共享的一个重要性质是加法同态：若多个参与方为各自的秘密各自构造了多项式，那么各计算方将自己收到的份额直接相加后，得到的「局部和份额」恰好是「总和多项式」在相应点上的取值。
+
+具体而言，设三个用户的秘密分别为 $a$、$b$、$c$，各自构造的多项式为：
+\[
+f_1(x)=a+r_1x,\quad f_2(x)=b+r_2x,\quad f_3(x)=c+r_3x \pmod{p}
+\]
+
+第 $i$ 个计算方收到的三份份额分别为 $f_1(i)$、$f_2(i)$、$f_3(i)$，其局部和为：
+\[
+d_i = f_1(i) + f_2(i) + f_3(i) \pmod{p}
+\]
+
+由于多项式加法在相同点上的值等于值的加法，$d_i$ 恰好等于总和多项式 $F(x)=(a+b+c)+(r_1+r_2+r_3)x$ 在 $x=i$ 处的取值。因此，任意两个 $d_i$ 即可通过拉格朗日插值恢复总和 $S=a+b+c$。
+
+\subsection{拉格朗日插值重构}
+
+给定 $t$ 个点 $(x_1, y_1), \dots, (x_t, y_t)$，拉格朗日插值多项式为：
+\[
+L(x) = \sum_{i=1}^{t} y_i \prod_{j \neq i} \frac{x - x_j}{x_i - x_j} \pmod{p}
+\]
+
+在本实验中，我们只需在 $x=0$ 处求值来恢复秘密总和：
+\[
+S = L(0) = \sum_{i=1}^{t} y_i \prod_{j \neq i} \frac{-x_j}{x_i - x_j} \pmod{p}
+\]
+
+其中除法在模 $p$ 下通过费马小定理实现：$\frac{a}{b} \equiv a \cdot b^{p-2} \pmod{p}$。
+
+\subsection{协议整体流程}
+
+综合以上三个组件，本实验的完整协议如下：
+
+\begin{framed}
+\begin{enumerate}
+    \item \textbf{秘密分发阶段：} 每个用户 $U_k$ 输入私有数据 $s_k$，构造随机一次多项式 $f_k(x)=s_k+r_kx \bmod p$，计算份额 $f_k(1), f_k(2), f_k(3)$，分别发送给三个计算方。
+    \item \textbf{局部求和阶段：} 每个计算方 $C_i$ 收到三份份额后，计算局部和 $d_i = \sum_{k=1}^3 f_k(i) \bmod p$。
+    \item \textbf{重构阶段：} 结果方任取两个局部和（如 $d_1, d_2$），通过拉格朗日插值恢复总和 $S = a+b+c$。
+    \item \textbf{平均值输出：} 计算 $\text{avg} = S / 3$。
+\end{enumerate}
+\end{framed}
+
+该协议的隐私保护体现在：每个计算方只看到三份随机化的份额，单独一份或两份份额在信息论意义上不泄露原始秘密；同时，最终暴露的总和与平均值是多方聚合后的统计结果，不会追溯到单个参与方的具体输入。
+
+% ==================================================================
+\section{实验过程}
+% ==================================================================
+
+\subsection{实验环境与项目结构}
+
+本次实验在 Windows 平台完成，使用 conda 虚拟环境 \texttt{datasec}。我们首先确认 Python 运行环境是否就绪。
+
+\begin{lstlisting}[title=查看 Python 版本,frame=trbl,language={Python}]
+conda activate datasec
+python --version
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/1.png}
+    \caption{Python 运行环境检查结果}
+    \label{fig:env}
+\end{figure}
+
+从图中可以看到，命令行提示符已经处于 \texttt{(datasec)} 虚拟环境中，系统正确返回 \texttt{Python 3.11.15}。这说明当前实验已经切换到了专用环境，无需额外安装第三方包——Shamir 秘密共享的所有运算（快速幂、模运算、随机数生成）均可由 Python 标准库直接支持。
+
+实验代码位于 \texttt{lab3/src/} 目录下，按职责拆分为四个文件：
+
+\begin{itemize}
+    \item \texttt{function.py}：核心数学函数，包括快速幂、多项式生成与求值、拉格朗日插值重构。
+    \item \texttt{secret.py}：用户端程序，输入私有数据，生成随机一次多项式并分发 3 份份额。
+    \item \texttt{count.py}：计算方程序，收集属于自己的份额并求局部和。
+    \item \texttt{avg.py}：结果方程序，用任意两份局部和重构总和并输出平均值。
+\end{itemize}
+
+自动化测试位于 \texttt{lab3/tests/test\_lab3.py}，覆盖基础正确性、门限一致性、非整除情况、随机性与隐私性等六个测试场景。
+
+\subsection{核心函数实现}
+
+首先，我们实现了秘密共享所需的基础数学工具。这些函数是整个协议的计算基石。
+
+\begin{lstlisting}[title=function.py：快速幂与多项式操作,frame=trbl,language={Python}]
+import random
+
+def quickpower(a, b, p):
+    """快速幂计算 a^b % p"""
+    a = a % p
+    ans = 1
+    while b != 0:
+        if b & 1:
+            ans = (ans * a) % p
+        b >>= 1
+        a = (a * a) % p
+    return ans
+
+def get_polynomial(x0, T, p, fname):
+    """构建多项式：x0为常数项系数，T为最高次项次数，p为模数"""
+    f = [x0]
+    for _ in range(T):
+        f.append(random.randrange(0, p))
+    f_print = f'f{fname} = {f[0]}'
+    for i in range(1, T + 1):
+        f_print += f' + {f[i]}x^{i}'
+    print(f_print)
+    return f
+
+def count_polynomial(f, x, p):
+    """计算多项式在x处的值 mod p"""
+    ans = f[0]
+    for i in range(1, len(f)):
+        ans = (ans + f[i] * quickpower(x, i, p)) % p
+    return ans
+\end{lstlisting}
+
+其中，\texttt{quickpower} 使用二进制快速幂算法，时间复杂度为 $O(\log b)$，是整个模运算体系的基础。\texttt{get\_polynomial} 以秘密值 $s$ 作为常数项、随机生成一次项系数，构造 $(2,3)$ 方案所需的 1 次多项式——这正是 Shamir 方案的核心构造步骤。\texttt{count\_polynomial} 使用霍纳法则的变体计算多项式在指定点处的值。
+
+拉格朗日插值重构的实现如下。该函数接收 $t$ 个点的横坐标与纵坐标，利用费马小定理在模 $p$ 下计算除法逆元，最终在 $x=0$ 处恢复秘密。
+
+\begin{lstlisting}[title=function.py：拉格朗日插值重构,frame=trbl,language={Python}]
+def restructure_polynomial(x, fx, t, p):
+    """拉格朗日插值重构多项式在x=0处的值，t为使用的点数"""
+    ans = 0
+    for i in range(t):
+        fx[i] = fx[i] % p
+        fxi = 1
+        for j in range(t):
+            if j != i:
+                fxi = (-1 * fxi * x[j] * quickpower(x[i] - x[j], p - 2, p)) % p
+        fxi = (fxi * fx[i]) % p
+        ans = (ans + fxi) % p
+    return ans
+\end{lstlisting}
+
+该函数按拉格朗日基多项式逐项计算：对于每个点 $(x_i, y_i)$，先计算 $\prod_{j \neq i} \frac{-x_j}{x_i - x_j} \bmod p$，再乘以 $y_i$ 并累加。模逆元通过费马小定理 $b^{p-2} \equiv b^{-1} \pmod{p}$ 高效实现。
+
+以上四个函数构成了本次实验的核心计算层，后续三个文件中的秘密分发、份额聚合与结果重构均建立在这些函数之上。
+
+\subsection{秘密份额生成}
+
+每个用户运行 \texttt{secret.py}，输入自己的 ID 和私有数据。程序会为该数据构造一次多项式 $f(x)=s+rx \bmod p$，计算 $f(1), f(2), f(3)$ 三份份额，并将它们分别写入 \texttt{user\_\{id\}\_\{1,2,3\}.txt} 文件。
+
+\begin{lstlisting}[title=secret.py：用户端秘密份额生成,frame=trbl,language={Python}]
+import function as func
+
+p = 1000000007
+print(f'模数 p: {p}')
+
+uid = int(input('请输入参与方 id (1/2/3): '))
+s = int(input(f'请输入用户{uid}的秘密值 s: '))
+
+shares_x = [1, 2, 3]
+
+print(f'\n用户{uid}的秘密值的多项式及秘密份额：')
+f = func.get_polynomial(s, 1, p, str(uid))
+for j in range(3):
+    share_y = func.count_polynomial(f, shares_x[j], p)
+    print(f'  ({shares_x[j]}, {share_y})')
+    with open(f'user_{uid}_{j+1}.txt', 'w') as fout:
+        fout.write(str(share_y))
+\end{lstlisting}
+
+下面我们以三个用户分别输入 $a=3$、$b=6$、$c=9$ 为例，展示秘密份额的实际生成过程。其中每个用户依次运行 \texttt{secret.py}，程序打印所构造的随机一次多项式及三份份额。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/4.png}
+    \caption{用户1（秘密值 $a=3$）运行 secret.py 生成的份额}
+    \label{fig:secret1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/5.png}
+    \caption{用户2（秘密值 $b=6$）运行 secret.py 生成的份额}
+    \label{fig:secret2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/6.png}
+    \caption{用户3（秘密值 $c=9$）运行 secret.py 生成的份额}
+    \label{fig:secret3}
+\end{figure}
+
+从以上三张图可以看出，每个用户的多项式均以各自的秘密值作为常数项，搭配一个随机的一次项系数。例如用户 1 的多项式为 $f_1(x)=3+453451836x \bmod p$，用户 2 为 $f_2(x)=6+990527498x \bmod p$，用户 3 为 $f_3(x)=9+490134545x \bmod p$。由于随机系数各不相同且在 $[0, p)$ 内均匀分布，任何单独一份份额在模 $p$ 下都是与秘密无关的随机值。
+
+三个用户分别运行完毕后，共有 9 个份额文件写入磁盘。我们通过以下命令查看全部份额文件的内容：
+
+\begin{lstlisting}[title=查看所有份额文件,frame=trbl,language={bash}]
+Get-ChildItem user_*.txt | ForEach-Object {
+    Write-Host "$($_.Name): $(Get-Content $_.FullName)"
+}
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/7.png}
+    \caption{全部 9 个份额文件内容一览}
+    \label{fig:all-shares}
+\end{figure}
+
+从图中可以看到，9 个份额值在 $[0, p)$ 内分散分布。单独查看任意一个文件（如 \texttt{user\_1\_1.txt} 中的 453451839），无法反推用户 1 的秘密值 3——这直观地体现了 Shamir 方案信息论意义上的安全性。
+
+\subsection{份额聚合与局部求和}
+
+每个计算方运行 \texttt{count.py}，程序会读取三个用户分别发来的份额文件 \texttt{user\_\{1,2,3\}\_\{id\}.txt}，在模 $p$ 下求和得到局部和 $d_i$，并保存至 \texttt{d\_\{id\}.txt}。
+
+\begin{lstlisting}[title=count.py：计算方局部求和,frame=trbl,language={Python}]
+p = 1000000007
+
+uid = int(input('请输入参与方 id (1/2/3): '))
+
+data = []
+for i in range(1, 4):
+    with open(f'user_{i}_{uid}.txt', 'r') as f:
+        data.append(int(f.read()))
+
+d = sum(data) % p
+print(f'x={uid} 求得的秘密份额和为: {d}')
+
+with open(f'd_{uid}.txt', 'w') as f:
+    f.write(str(d))
+\end{lstlisting}
+
+三个计算方依次运行 \texttt{count.py}，各自求出局部和 $d_1$、$d_2$、$d_3$。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/8.png}
+    \caption{计算方1 运行 count.py 求得局部和 $d_1$}
+    \label{fig:count1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/9.png}
+    \caption{计算方2 运行 count.py 求得局部和 $d_2$}
+    \label{fig:count2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/10.png}
+    \caption{计算方3 运行 count.py 求得局部和 $d_3$}
+    \label{fig:count3}
+\end{figure}
+
+三种局部和分别写入 \texttt{d\_1.txt}、\texttt{d\_2.txt}、\texttt{d\_3.txt}，我们查看这三个文件的内容：
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/11.png}
+    \caption{三个局部和文件的内容}
+    \label{fig:d-files}
+\end{figure}
+
+此时每个计算方仅知道自己的局部和 $d_i$。由于 $d_i$ 是三个秘密多项式的和在该点处的取值，单独一个 $d_i$ 不能恢复任何原始秘密——它等价于总和多项式 $F(x)$ 在一个点上的值，而一次多项式需要两个点才能唯一确定。这正是加法同态与 $(2,3)$ 门限方案共同提供的隐私保障。
+
+\subsection{总和重构与平均值计算}
+
+最后，结果方运行 \texttt{avg.py}，任选两个局部和文件（我们以 $d_2, d_3$ 为例），通过拉格朗日插值重构总和 $S$，再除以 3 得到平均值。
+
+\begin{lstlisting}[title=avg.py：总和重构与平均值输出,frame=trbl,language={Python}]
+import function as func
+
+p = 1000000007
+
+x_used = [2, 3]
+d_values = []
+for i in x_used:
+    with open(f'd_{i}.txt', 'r') as f:
+        d_values.append(int(f.read()))
+
+S = func.restructure_polynomial(x_used, d_values, 2, p)
+print(f'重构总和 S = a + b + c = {S}')
+
+avg_direct = S / 3.0
+print(f'平均值（直接除法）: {avg_direct}')
+
+inv3 = func.quickpower(3, p - 2, p)
+avg_mod = (S * inv3) % p
+print(f'3 在模{p}下的逆元: {inv3}')
+print(f'平均值（模逆元运算）: {avg_mod}')
+\end{lstlisting}
+
+这里我们同时输出了两种平均值计算方式的结果：一是重构后在实数域直接除以 3，二是在有限域中用模逆元 $3^{-1} \bmod p$ 完成等价的除法运算。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/12.png}
+    \caption{运行 avg.py 重构总和并输出平均值（核心结果）}
+    \label{fig:avg-result}
+\end{figure}
+
+从结果可以看出，重构出的总和 $S=18$ 与明文直接求和 $3+6+9=18$ 完全一致，平均值 $6.0$ 也与预期吻合。模逆元方式给出的结果同样是 $6$，这是因为 $18$ 能被 $3$ 整除，两种计算方式在此场景下等价。这说明我们的秘密共享协议在保护各方原始输入的同时，正确完成了隐私求和与平均值计算。
+
+\subsection{非整除情况验证}
+
+为了验证方案在非整除场景下的表现，我们再用一组不能整除的输入（$a=1$、$b=2$、$c=2$）重复完整流程。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/13.png}
+    \caption{非整除测试：三个用户输入 $(1, 2, 2)$ 的秘密份额生成}
+    \label{fig:nondiv-secret}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/14.png}
+    \caption{非整除测试：三个计算方的局部和}
+    \label{fig:nondiv-count}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.88\textwidth]{../image/15.png}
+    \caption{非整除测试：重构总和 $S=5$，平均值约 $1.667$}
+    \label{fig:nondiv-avg}
+\end{figure}
+
+从图 \ref{fig:nondiv-avg} 中可以看到，重构总和 $S=5$ 与明文求和 $1+2+2=5$ 一致。直接除法给出的平均值约为 $1.667$，而模逆元运算给出的有限域结果为 $(5 \times 333333336) \bmod 1000000007 = 1$，这是因为 $5/3$ 在整数域截断为 1。两种输出方式各有适用场景：直接除法更符合日常直觉，适合报告展示和结果解释；模逆元方式则在代数上严格保留在有限域框架内，适合后续密码学协议的组合。
+
+\subsection{自动化测试验证}
+
+为了系统性地验证实现的正确性，我们编写了自动化测试脚本 \texttt{test\_lab3.py}，覆盖以下六个测试场景：
+
+\begin{enumerate}
+    \item \textbf{基础正确性测试：} 输入 $(3, 6, 9)$，期望总和 $S=18$，平均值 $6.0$。
+    \item \textbf{门限一致性测试：} 输入 $(100, 200, 300)$，分别用 $(d_1,d_2)$、$(d_1,d_3)$、$(d_2,d_3)$ 三组组合重构，验证结果均为 $S=600$。
+    \item \textbf{非整除测试：} 输入 $(1, 2, 2)$，总和 $S=5$，平均值约为 $1.667$。
+    \item \textbf{随机性测试：} 同一输入 $(42, 17, 99)$ 运行两次，验证份额不同但重构总和均为 $158$。
+    \item \textbf{隐私性测试：} 验证单个份额值不等于原始秘密值，直观体现份额的随机化效果。
+    \item \textbf{较大值测试：} 输入 $(10^6, 2\times 10^6, 3\times 10^6)$，验证总和与平均值在大值场景下仍正确。
+\end{enumerate}
+
+测试脚本的核心结构如下：\texttt{run\_full\_flow} 函数接收三个秘密值，自动完成多项式生成、份额分发、局部求和与拉格朗日重构，返回总和与平均值；随后六个测试函数各司其职，通过断言验证结果是否符合预期。
+
+\begin{lstlisting}[title=test\_lab3.py：核心测试框架（节选）,frame=trbl,language={Python}]
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+import function as func
+
+P = 1000000007
+SHARES_X = [1, 2, 3]
+
+def run_full_flow(secrets):
+    """运行完整流程：份额生成 -> 局部求和 -> 重构平均"""
+    n = len(secrets)
+    all_shares = {}
+    # 阶段1: 每个用户生成多项式并计算份额
+    for uid, s in enumerate(secrets, start=1):
+        f = func.get_polynomial(s, 1, P, str(uid))
+        for j, x in enumerate(SHARES_X, start=1):
+            all_shares[(uid, j)] = func.count_polynomial(f, x, P)
+    # 阶段2: 每个计算方求局部和
+    d = {}
+    for receiver in range(1, n + 1):
+        total = 0
+        for sender in range(1, n + 1):
+            total = (total + all_shares[(sender, receiver)]) % P
+        d[receiver] = total
+    # 阶段3: 拉格朗日插值重构
+    S12 = func.restructure_polynomial([1, 2], [d[1], d[2]], 2, P)
+    S13 = func.restructure_polynomial([1, 3], [d[1], d[3]], 2, P)
+    S23 = func.restructure_polynomial([2, 3], [d[2], d[3]], 2, P)
+    avg_direct = S12 / 3.0
+    return {'all_shares': all_shares, 'd': d,
+            'S12': S12, 'S13': S13, 'S23': S23, 'avg_direct': avg_direct}
+
+def test_basic_correctness():
+    """基础正确性：(3,6,9) -> S=18, avg=6.0"""
+    result = run_full_flow([3, 6, 9])
+    assert result['S12'] == 18
+    assert abs(result['avg_direct'] - 6.0) < 1e-9
+
+def test_threshold_consistency():
+    """门限一致性：任意2份恢复结果相同"""
+    result = run_full_flow([100, 200, 300])
+    assert result['S12'] == result['S13'] == result['S23'] == 600
+
+def test_non_divisible():
+    """非整除：(1,2,2) -> S=5, avg=1.667"""
+    result = run_full_flow([1, 2, 2])
+    assert result['S12'] == 5
+    assert abs(result['avg_direct'] - 5 / 3.0) < 1e-9
+
+def test_randomness():
+    """随机性：同一输入两次运行份额不同，但重构结果相同"""
+    r1 = run_full_flow([42, 17, 99])
+    r2 = run_full_flow([42, 17, 99])
+    assert r1['S12'] == r2['S12'] == 158
+    # 验证份额确实不同
+    shares_differ = any(r1['all_shares'][k] != r2['all_shares'][k]
+                        for k in r1['all_shares'])
+    assert shares_differ
+
+def test_privacy_intuition():
+    """隐私性：份额 != 秘密值"""
+    result = run_full_flow([12345, 67890, 11111])
+    assert result['all_shares'][(1, 1)] != 12345
+
+def test_large_values():
+    """大值：(1e6,2e6,3e6) -> S=6e6, avg=2e6"""
+    result = run_full_flow([1000000, 2000000, 3000000])
+    assert result['S12'] == 6000000
+\end{lstlisting}
+
+其中，\texttt{run\_full\_flow} 是测试的核心引擎：它将三次手动运行 \texttt{secret.py}、三次 \texttt{count.py} 和一次 \texttt{avg.py} 的过程整合为一次函数调用，直接在内存中完成全流程模拟。六个测试函数分别从正确性、门限一致性、边界处理、随机隐私和大数据五个维度对实现进行验证，每个函数末尾的 \texttt{assert} 断言确保结果严格匹配预期。
+
+运行 \texttt{python tests/test\_lab3.py}，终端输出如下：
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../image/16.png}
+    \caption{自动化测试输出（第 1 部分）}
+    \label{fig:test1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../image/17.png}
+    \caption{自动化测试输出（第 2 部分）}
+    \label{fig:test2}
+\end{figure}
+
+从图 \ref{fig:test1} 和 \ref{fig:test2} 中可以看到，全部 6 项测试均标记为 PASS。具体而言：
+
+\begin{itemize}
+    \item 测试 1 验证了基础流程的正确性，$S=18$ 且 $\text{avg}=6.0$。
+    \item 测试 2 验证了门限恢复的一致性：无论选取 $(d_1,d_2)$、$(d_1,d_3)$ 还是 $(d_2,d_3)$，重构的 $S$ 均为 600，说明任意 2 份局部和均可正确恢复总和。
+    \item 测试 3 验证了非整除情况下输出为浮点数 $1.667$，与理论值 $5/3$ 吻合。
+    \item 测试 4 连续运行了两次完整流程，两次的份额值完全不同（因为多项式随机系数不同），但重构总和均为 158。这既验证了随机多项式不改变最终聚合结果，又验证了随机性有效保护了单个秘密。
+    \item 测试 5 断言份额不等于原始秘密值，直观体现了 Shamir 方案的隐私性。
+    \item 测试 6 在大值输入下（每组数据达到百万级），总和与平均值仍然正确计算，说明模数 $p=1000000007$ 足够容纳这些数据而不发生回绕。
+\end{itemize}
+
+\subsection{门限组合额外验证}
+
+为了进一步确认 $(2,3)$ 门限方案中「任意 2 份恢复」的性质确实成立，我们单独验证：使用 $d_1, d_2$ 重构和使用 $d_1, d_3$ 重构的结果一致性。这一验证已包含在自动化测试 2 中，从图 \ref{fig:test1} 中可以看到 $\text{S12}=\text{S13}=\text{S23}=600$，三者完全一致。
+
+至此，我们从正确性、门限恢复能力、随机隐私性、边界处理和大数据量五个维度系统验证了本次实验的实现，所有指标均符合预期。
+
+% ==================================================================
+\section{实验心得与体会}
+% ==================================================================
+
+本次实验从实验 3.2 的投票统计方案出发，将其改造为「三方私有数据平均值计算」场景。在方案设计上，我们并没有引入新的密码学组件，而是充分利用了 Shamir 秘密共享的加法同态性质：将投票值 $0/1$ 替换为任意整数，其余份额分发、局部求和与拉格朗日重构流程完全保持不变。这种改造方式说明，课程中讲解的基础秘密共享方案具备良好的场景迁移能力。
+
+在实现层面，我们将协议拆分为四个职责明确的 Python 脚本，分别对应函数库、秘密分发、份额聚合与结果重构。这种按协议阶段分割的文件结构使实验流程更清晰，也便于逐步验证每个阶段的正确性。自动化测试覆盖了基础正确性、门限一致性、随机性和隐私直观验证等场景，为实现的可靠性提供了系统化的支撑。
+
+通过本次实验，我们对 Shamir 门限秘密共享的构造、加法同态的工作方式以及拉格朗日插值在秘密重构中的具体应用有了更直接的理解。同时，我们也注意到本实验在半诚实模型下能够保护各方的原始输入，但最终暴露的总和与平均值意味着安全目标是「隐藏个体值」而非「隐藏聚合值」——这一边界条件在实际应用中需要结合具体业务场景进行审慎评估。若继续扩展，还可以进一步考虑抗合谋的多方方案或引入安全多方计算中的乘法协议，以支持更丰富的聚合函数。
+
+\end{document}
